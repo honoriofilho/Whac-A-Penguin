@@ -1,0 +1,91 @@
+#usda 1.0
+(
+    defaultPrim = "penguin"
+    metersPerUnit = 1
+    upAxis = "Y"
+)
+
+def "penguin" (
+    active = true
+    references = @Materials/Penguins/penguin.usdz@
+)
+{
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (0.0005, 0.0005, 0.0005)
+    float3 xformOp:translate = (0, -7.1525574e-7, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+
+    over "Meshes"
+    {
+        over "Sketchfab_model"
+        {
+            over "root"
+            {
+                over "GLTF_SceneRootNode"
+                {
+                    over "penguin_23"
+                    {
+                    }
+                }
+            }
+        }
+    }
+
+    def RealityKitComponent "AnimationLibrary"
+    {
+        uniform token info:id = "RealityKit.AnimationLibrary"
+
+        def RealityKitClipDefinition "Clip_default_subtree_animation"
+        {
+            uniform string[] clipNames = []
+            uniform string sourceAnimationName = "default subtree animation"
+            uniform double[] startTimes = []
+        }
+    }
+
+    def RealityKitComponent "AudioLibrary"
+    {
+        uniform token info:id = "RealityKit.AudioLibrary"
+
+        def RealityKitDict "resources"
+        {
+            string[] keys = ["punch.m4a"]
+            rel values = </penguin/punch_m4a>
+        }
+    }
+
+    def RealityKitAudioFile "punch_m4a"
+    {
+        uniform asset file = @Materials/Sounds/punch.m4a@
+        uniform bool shouldLoop = 0
+    }
+
+    def RealityKitCustomComponent "RealityKitContent_PenguinComponent"
+    {
+        uniform token info:id = "RealityKitContent.PenguinComponent"
+    }
+}
+
+def "penguin_1" (
+    active = true
+    references = @Materials/Penguins/penguin.usdz@
+)
+{
+    reorder nameChildren = ["Materials", "Meshes"]
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (0.0005, 0.0005, 0.0005)
+    float3 xformOp:translate = (0.2182301, 0, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+}
+
+def "penguin_2" (
+    active = true
+    references = @Materials/Penguins/penguin.usdz@
+)
+{
+    quatf xformOp:orient = (1, 0, 0, 0)
+    float3 xformOp:scale = (0.0005, 0.0005, 0.0005)
+    float3 xformOp:translate = (-0.22294834, -7.1525574e-7, 0)
+    uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:orient", "xformOp:scale"]
+}
+
